@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: __APP__
-  namespace: __APP__
+  name: guardrails
+  namespace: guardrails
 spec:
   interval: 10m
-  releaseName: __APP__
+  releaseName: guardrails
   chartRef:
     kind: OCIRepository
-    name: __APP__
+    name: guardrails
   install:
     crds: CreateReplace
     remediation:

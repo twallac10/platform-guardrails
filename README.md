@@ -1,6 +1,6 @@
-# __APP__
+# guardrails
 
-Deployment repo for the `__APP__` platform app. Created from
+Deployment repo for the `guardrails` platform app. Created from
 [platform-app-template](https://github.com/twallac10/platform-app-template) by
 `task repos:create` in platform-fleet; keep the shape identical to the template.
 
@@ -14,10 +14,16 @@ Deployment repo for the `__APP__` platform app. Created from
 | `scripts/` | Used by the workflows and by `task charts:seed` | |
 
 Flux in each tier's cluster applies `./tiers/<tier>` from this repo (see
-platform-fleet `fleet/apps/__APP__.yaml`).
+platform-fleet `fleet/apps/guardrails.yaml`).
 
 ## Changing things
 
 - **New chart version**: bump `version` in `mirror/chart.yaml`. Nothing else.
 - **Shared setting**: edit the first tier's `release.yaml`; it flows from there.
 - **Tier setting**: edit that tier's `tier.yaml`. It never leaves the tier.
+
+## guardrails specifics
+
+The chart is built from source in `chart/` (name `guardrails`, version `0.1.0`); `mirror/chart.yaml` uses
+`source.type: local`. Bump `chart/Chart.yaml` and `mirror/chart.yaml` `version` together. See `chart/README.md`
+for the policies, values and example manifests.

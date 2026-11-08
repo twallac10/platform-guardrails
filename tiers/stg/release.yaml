@@ -3,10 +3,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: __APP__
-  namespace: __APP__
+  name: guardrails
+  namespace: guardrails
   annotations:
-    platform.twallac10.io/chart-version: "0.0.0"
+    platform.twallac10.io/chart-version: "0.1.0"
 spec:
   ref:
     digest: "sha256:0000000000000000000000000000000000000000000000000000000000000000" # set by `task charts:seed` / mirror.yaml
@@ -14,7 +14,8 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: __APP__
-  namespace: __APP__
+  name: guardrails
+  namespace: guardrails
 spec:
-  values: {}
+  values:
+    allowedOCIPrefix: "oci://ghcr.io/twallac10/charts/"
